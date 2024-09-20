@@ -1,0 +1,14 @@
+#! /bin/bash
+
+# Define variáveis
+pasta_backup="/home/vikas/atividades/consumomem"
+idade_arquivos=1 # Excluir arquivos com mais de 1 dia
+
+# Verifica se a pasta existe
+if [ ! -d "$pasta_backup" ]; then
+	echo "A pasta de backup '$pasta_backup' não existe."
+	exit 1
+fi
+
+# Excluindo arquivos mais antigos
+find "$pasta_backup" -type f -mtime +"$idade_arquivos" -exec rm -f {} \;
